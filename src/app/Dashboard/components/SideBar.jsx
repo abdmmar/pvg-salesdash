@@ -35,6 +35,60 @@ function SideBarItem({ active, text, icon }) {
   )
 }
 
+function Accordion() {
+  return (
+    <li className="my-5 first:mt-0 hover:bg-klikoo-primary-60 hover:bg-opacity-20">
+      <button className="w-full text-gray-500">
+        <div className="flex justify-between px-12 py-4 max-md:w-fit max-md:px-8 max-sm:px-4">
+          <div className="flex">
+            <div className="mr-5 max-md:mr-0">
+              <OrganizationChartIcon className="fill-gray-500" />
+            </div>
+            <span className="max-md:hidden">Channel</span>
+          </div>
+          <div className="max-md:hidden">
+            <ArrowUpIcon className="fill-gray-500" width="18" />
+          </div>
+        </div>
+      </button>
+      <div className="max-md:hidden">
+        <ul>
+          <li>
+            <a href="#" className="text-gray-500">
+              <div className="flex px-12 py-4">
+                <div className="mr-5">
+                  <div className="h-6 w-6" />
+                </div>
+                <span>Agent</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#" className="text-gray-500">
+              <div className="flex px-12 py-4">
+                <div className="mr-5">
+                  <div className="h-6 w-6" />
+                </div>
+                <span>Balance</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#" className="text-gray-500">
+              <div className="flex px-12 py-4">
+                <div className="mr-5">
+                  <div className="h-6 w-6" />
+                </div>
+                <span>Transaction</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  )
+}
+
 export default function SideBar() {
   return (
     <div className="bg-klikoo-secondary-20">
@@ -48,55 +102,7 @@ export default function SideBar() {
           <SideBarItem text="Balance" icon={WalletIcon} />
           <SideBarItem text="Transaction" icon={ExhangeIcon} />
           <SideBarItem text="Product" icon={ShoppingBagIcon} />
-          {/* <li className="my-5 first:mt-0">
-            <button className="w-full text-gray-500">
-              <div className="flex justify-between px-12 py-4">
-                <div className="flex">
-                  <div className="mr-5">
-                    <OrganizationChartIcon className="fill-gray-500" />
-                  </div>
-                  <span>Channel</span>
-                </div>
-                <div className="">
-                  <ArrowUpIcon className="fill-gray-500" width="18" />
-                </div>
-              </div>
-            </button>
-            <div>
-              <ul>
-                <li>
-                  <a href="#" className="text-gray-500">
-                    <div className="flex px-12 py-4">
-                      <div className="mr-5">
-                        <div className="h-6 w-6" />
-                      </div>
-                      <span>Agent</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-500">
-                    <div className="flex px-12 py-4">
-                      <div className="mr-5">
-                        <div className="h-6 w-6" />
-                      </div>
-                      <span>Balance</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-500">
-                    <div className="flex px-12 py-4">
-                      <div className="mr-5">
-                        <div className="h-6 w-6" />
-                      </div>
-                      <span>Transaction</span>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li> */}
+          <Accordion />
         </ul>
         <ul className="pt-4">
           <SideBarItem text="Logout" icon={LogoutIcon} />
