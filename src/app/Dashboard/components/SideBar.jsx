@@ -1,3 +1,5 @@
+import { clsx } from 'clsx'
+
 import { ReactComponent as DashboardIcon } from '@/assets/dashboard-line.svg'
 import { ReactComponent as WalletIcon } from '@/assets/wallet-line.svg'
 import { ReactComponent as LogoutIcon } from '@/assets/logout-box-r-line.svg'
@@ -7,56 +9,46 @@ import { ReactComponent as OrganizationChartIcon } from '@/assets/organization-c
 import { ReactComponent as ArrowDownIcon } from '@/assets/arrow-down-s-line.svg'
 import { ReactComponent as ArrowUpIcon } from '@/assets/arrow-up-s-line.svg'
 
+function SideBarItem({ active, text, icon }) {
+  const Icon = icon
+
+  return (
+    <li className="my-5 first:mt-0 hover:bg-klikoo-primary-60 hover:bg-opacity-20">
+      <a href="#">
+        <div className="relative flex px-12 py-4 max-md:w-fit max-md:px-8 max-sm:px-4">
+          <div className="mr-5 max-md:mr-0">
+            <Icon className={clsx(active ? 'fill-klikoo-primary-100' : 'fill-gray-500')} />
+          </div>
+          <span
+            className={`max-md:hidden ${clsx(
+              active ? 'font-bold text-klikoo-primary-100' : 'text-gray-500',
+            )}`}
+          >
+            {text}
+          </span>
+          {active ? (
+            <div className="absolute top-2.5 right-0 h-9 w-1.5 rounded-l-lg bg-klikoo-primary-100" />
+          ) : null}
+        </div>
+      </a>
+    </li>
+  )
+}
+
 export default function SideBar() {
   return (
-    <div className=" bg-klikoo-secondary-20">
-      <div className="px-16 pt-11 text-center text-3xl font-bold text-klikoo-primary-100">
-        SalesDash
+    <div className="bg-klikoo-secondary-20">
+      <div className="px-16 pt-11 text-center text-3xl font-bold text-klikoo-primary-100 max-md:w-fit max-md:px-8 max-sm:px-4 max-sm:pt-8">
+        <span className="max-md:hidden">SalesDash</span>
+        <span className="md:hidden">S</span>
       </div>
       <nav className="mt-12 divide-y">
         <ul>
-          <li className="my-5 first:mt-0 hover:bg-klikoo-primary-60 hover:bg-opacity-20">
-            <a href="#" className="">
-              <div className="relative flex px-12 py-4">
-                <div className="mr-5">
-                  <DashboardIcon className="fill-klikoo-primary-100" />
-                </div>
-                <span className="font-bold text-klikoo-primary-100">Dashboard</span>
-                <div className="absolute top-2.5 right-0 h-9 w-1.5 rounded-l-lg bg-klikoo-primary-100" />
-              </div>
-            </a>
-          </li>
-          <li className="my-5 first:mt-0">
-            <a href="#" className="text-gray-500">
-              <div className="flex px-12 py-4">
-                <div className="mr-5">
-                  <WalletIcon className="fill-gray-500" />
-                </div>
-                <span>Balance</span>
-              </div>
-            </a>
-          </li>
-          <li className="my-5 first:mt-0">
-            <a href="#" className="text-gray-500">
-              <div className="flex px-12 py-4">
-                <div className="mr-5">
-                  <ExhangeIcon className="fill-gray-500" />
-                </div>
-                <span>Transaction</span>
-              </div>
-            </a>
-          </li>
-          <li className="my-5 first:mt-0">
-            <a href="#" className="text-gray-500">
-              <div className="flex px-12 py-4">
-                <div className="mr-5">
-                  <ShoppingBagIcon className="fill-gray-500" />
-                </div>
-                <span>Product</span>
-              </div>
-            </a>
-          </li>
-          <li className="my-5 first:mt-0">
+          <SideBarItem text="Dashboard" icon={DashboardIcon} active />
+          <SideBarItem text="Balance" icon={WalletIcon} />
+          <SideBarItem text="Transaction" icon={ExhangeIcon} />
+          <SideBarItem text="Product" icon={ShoppingBagIcon} />
+          {/* <li className="my-5 first:mt-0">
             <button className="w-full text-gray-500">
               <div className="flex justify-between px-12 py-4">
                 <div className="flex">
@@ -104,19 +96,10 @@ export default function SideBar() {
                 </li>
               </ul>
             </div>
-          </li>
+          </li> */}
         </ul>
         <ul className="pt-4">
-          <li className="my-5 first:mt-0">
-            <a href="#" className="text-gray-500">
-              <div className="flex px-12 py-4">
-                <div className="mr-5">
-                  <LogoutIcon className="fill-gray-500" />
-                </div>
-                <span>Logout</span>
-              </div>
-            </a>
-          </li>
+          <SideBarItem text="Logout" icon={LogoutIcon} />
         </ul>
       </nav>
     </div>

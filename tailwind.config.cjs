@@ -7,8 +7,10 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        'dashboard': '280px 1fr 408px',
-        'dashboard-cart': '2fr 1fr',
+        'dashboard': '[sidebar] 0.8fr [main] 4fr [profilebar] 1.3fr',
+        'dashboard-cart': '[chart] 2fr [agent] 1fr',
+        'dashboard-md': '[sidebar] min-content [main] 1fr [profilebar] 0',
+        'dashboard-lg': '[sidebar] 0.4fr [main] 4fr [profilebar] 0'
       },
       minWidth: {
         32: '128px'

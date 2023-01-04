@@ -86,13 +86,22 @@ const agents = [
 
 export default function Dashboard() {
   return (
-    <div className="py-8 px-14">
-      <header>
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-        <p className="text-lg font-bold text-gray-500">Today's date: {currentDateFormatter()}</p>
+    <div className="max-[md,lg]:p-8 py-8 px-14 max-lg:p-8">
+      <header className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold">Dashboard</h1>
+          <p className="text-lg font-bold text-gray-500">Today's date: {currentDateFormatter()}</p>
+        </div>
+        <div className="hidden max-lg:block">
+          <img
+            src={profilePicture}
+            className="mr-4 h-8 w-8 rounded-full bg-slate-800 ring-4 ring-klikoo-primary-60 ring-offset-4"
+            alt="Profile Picture"
+          />
+        </div>
       </header>
       <main className="mt-12 grid gap-10">
-        <section className="grid grid-cols-3 gap-8">
+        <section className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8 max-md:gap-4">
           <CardStats
             label="Profit"
             number={11500000}
@@ -110,8 +119,8 @@ export default function Dashboard() {
             <span className="text-xl font-bold">transactions</span>
           </CardStats>
         </section>
-        <section className="grid grid-flow-col grid-cols-3 gap-8">
-          <div className="col-start-1 col-end-3 grid gap-10">
+        <section className="grid grid-cols-3 gap-8 max-lg:grid-cols-1">
+          <div className="grid gap-10 lg:col-start-1 lg:col-end-3">
             <section className="rounded-xl p-4 shadow-lg shadow-klikoo-primary-100/10">
               <div>
                 <span className="font-bold text-gray-500">Sales Chart</span>
@@ -119,7 +128,6 @@ export default function Dashboard() {
               <div>
                 <Chart
                   type="area"
-                  width={700}
                   height={300}
                   options={{
                     chart: {
@@ -206,7 +214,7 @@ export default function Dashboard() {
               <div className="mb-5">
                 <span className="font-bold text-gray-500">Top 5 Products</span>
               </div>
-              <div className="grid grid-cols-5 gap-4">
+              <div className="grid grid-flow-dense grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-4">
                 {products.map((product) => (
                   <CardProduct product={product} />
                 ))}
@@ -217,7 +225,7 @@ export default function Dashboard() {
             <div className="mb-4">
               <span className="font-bold text-gray-500">Top 5 Agents</span>
             </div>
-            <div className="grid gap-4">
+            <div className="grid gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
               {agents.map((agent) => (
                 <CardAgent agent={agent} />
               ))}

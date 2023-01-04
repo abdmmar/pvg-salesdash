@@ -4,7 +4,7 @@ import profilePicture from '@/assets/profile.png'
 
 export default function ProfileBar() {
   return (
-    <div className="bg-klikoo-secondary-80 p-8">
+    <div className="bg-klikoo-secondary-80 p-8 max-lg:hidden">
       <div>
         <div className="my-10 flex items-center justify-center">
           <div className="flex items-center">
